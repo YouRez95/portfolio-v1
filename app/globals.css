@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bagel {
+  font-family: "Bagel Fat One", cursive;
+}
+
+.text-primary {
+  color: #fdf7ec;
+}
+
+.text-secondary {
+  color: #FF5500;
+}
+
+.bg-primary {
+  background-color: #fdf7ec;
+}
+
+.bg-secondary {
+  background-color: #FF5500;
+}
