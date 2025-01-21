@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .bagel {
   font-family: "Bagel Fat One", cursive;
 }
@@ -20,4 +24,137 @@
 
 .bg-secondary {
   background-color: #ff5500;
+}
+
+.gallery {
+  --size: 200px;
+  display: grid;
+  grid-template-columns: repeat(6, var(--size));
+  grid-auto-rows: var(--size);
+  margin-bottom: var(--size);
+  place-items: start center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+}
+
+/* .gallery div.active {
+  transition: all;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  clip-path: none;
+}
+
+.gallery div {
+  object-fit: cover;
+  width: calc(var(--size) * 2);
+  height: calc(var(--size) * 2);
+  clip-path: path(
+    "M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z"
+  );
+  transition: clip-path 0.25s, filter 0.75s;
+  grid-column: auto / span 2;
+  border-radius: 5px;
+} */
+
+.gallery div {
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: calc(var(--size) * 2);
+  height: calc(var(--size) * 2);
+  clip-path: path(
+    "M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z"
+  );
+  transition: width 0.5s ease, height 0.5s ease, top 0.5s ease, left 0.5s ease,
+    clip-path 0.5s ease;
+  grid-column: auto / span 2;
+  border-radius: 5px;
+  position: relative; /* Keep it relative so it stays in the flow */
+}
+
+.gallery div.active {
+  position: relative;
+  z-index: 100;
+  width: 100vw; /* Expand to full width */
+  height: 100vh; /* Expand to full height */
+  clip-path: none; /* Remove clip-path for full view */
+  transition: width 1s ease, height 1s ease, top 1s ease, left 1s ease,
+    clip-path 1s ease;
+}
+
+.gallery:hover div:not(:hover),
+.gallery:focus div:not(:focus) {
+  filter: brightness(0.5) contrast(0.5);
+}
+
+.gallery div:nth-child(5n - 1) {
+  grid-column: 2 / span 2;
+}
+
+.gallery div:hover:not(.active),
+.gallery div:focus:not(.active) {
+  clip-path: path(
+    "M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z"
+  );
+  z-index: 1;
+  transition: clip-path 0.25s, filter 0.25s;
+}
+
+.gallery div:focus {
+  outline: 1px dashed black;
+  outline-offset: -5px;
+}
+
+/* Project gradient */
+
+.bg-gradient-1 {
+  background-image: linear-gradient(to bottom, #09203f 0%, #537895 100%);
+}
+
+.animate-x {
+  animation: translate-x 20s linear 1s infinite;
+}
+
+@keyframes translate-x {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-70%);
+  }
+}
+
+.animate-testimonials {
+  animation: translate-x2 20s linear 1s infinite;
+}
+
+@media (min-width: 1024px) {
+  .animate-testimonials {
+    animation: translate-y2 20s linear 1s infinite;
+  }
+}
+
+@keyframes translate-x2 {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes translate-y2 {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-50%);
+  }
 }

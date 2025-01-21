@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { prozaLibre } from "@/fonts/fonts";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +17,7 @@ export default function RootLayout({
       <body
         className={`${prozaLibre.className} overflow-x-hidden bg-[#FDF7EC]`}
       >
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

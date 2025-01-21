@@ -1,6 +1,8 @@
 import { bagel } from "@/fonts/fonts";
 import Button from "./ui/Button";
 import Image from "next/image";
+import Link from "next/link";
+import ContactFooter from "./ContactFooter";
 
 export default function Footer() {
   return (
@@ -23,69 +25,59 @@ export default function Footer() {
             </p>
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
-              <div className="bg-white w-10 h-10 flex items-center justify-center hover:bg-[#FDF7EC] hover:scale-110 transition-all cursor-pointer">
+              <Link
+                href="https://www.linkedin.com/in/younesselalouani/"
+                target="_blank"
+                className="bg-white w-10 h-10 flex items-center justify-center hover:bg-[#FDF7EC] hover:scale-110 transition-all cursor-pointer"
+              >
+                <Image
+                  alt="linkedin"
+                  src={"/linkedin.svg"}
+                  width={20}
+                  height={20}
+                />
+              </Link>
+              <Link
+                target="_blank"
+                href="https://www.facebook.com/youness.alwani.5"
+                className="bg-white w-10 h-10 flex items-center justify-center hover:bg-[#FDF7EC] hover:scale-110 transition-all cursor-pointer"
+              >
                 <Image
                   alt="facebook"
                   src={"/facebook.svg"}
                   width={20}
                   height={20}
                 />
-              </div>
+              </Link>
 
-              <div className="bg-white w-10 h-10 flex items-center justify-center">
+              <Link
+                target="_blank"
+                href="https://github.com/YouRez95"
+                className="bg-white w-10 h-10 flex items-center justify-center hover:bg-[#FDF7EC] hover:scale-110 transition-all cursor-pointer"
+              >
                 <Image
-                  alt="facebook"
-                  src={"/linkedin.svg"}
-                  width={20}
-                  height={20}
-                />
-              </div>
-
-              <div className="bg-white w-10 h-10 flex items-center justify-center">
-                <Image
-                  alt="facebook"
+                  alt="github"
                   src={"/github.svg"}
                   width={20}
                   height={20}
                 />
-              </div>
+              </Link>
 
-              <div className="bg-white w-10 h-10 flex items-center justify-center">
+              <Link
+                href="https://x.com/YouRez369"
+                target="_blank"
+                className="bg-white w-10 h-10 flex items-center justify-center hover:bg-[#FDF7EC] hover:scale-110 transition-all cursor-pointer"
+              >
                 <Image
-                  alt="facebook"
+                  alt="twitter"
                   src={"/twitter.svg"}
                   width={20}
                   height={20}
                 />
-              </div>
+              </Link>
             </div>
           </div>
-          <form className="flex flex-col w-[90%] mx-auto lg:mx-0 lg:ml-auto gap-4 lg:w-1/2 lg:max-w-[700px]">
-            <input
-              type="text"
-              placeholder="Name"
-              className="bg-transparent border-white border p-3 text-white outline-none capitalize"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="bg-transparent border-white border p-3 text-white outline-none"
-            />
-            <textarea
-              placeholder="Message"
-              className="bg-transparent border-white border p-3 text-white outline-none min-h-44"
-            />
-            <div className="w-full lg:w-fit lg:ml-auto">
-              <Button
-                backgroundColor="white"
-                textColor="black"
-                fontSize="16px"
-                padding="10px 30px"
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
+          <ContactFooter />
         </div>
         <div className="text-[#FDF7EC] flex justify-center absolute -bottom-8 sm:-bottom-12 md:-bottom-16 lg:-bottom-24 xl:-bottom-32">
           <h1

@@ -1,18 +1,22 @@
 import { bagel } from "@/fonts/fonts";
+import { useRouter } from "next/navigation";
+import { MENU_ITEMS } from "../constants/menu";
 
 type MenuProps = {
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const menuItems = [
-  { id: 1, label: "Home" },
-  { id: 2, label: "About" },
-  { id: 3, label: "Projects" },
-  { id: 4, label: "Blogs" },
-];
-
 export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
+  const router = useRouter();
+
+  const closeMenuFromLink = (label: string) => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      router.push(`/#${label.toLowerCase()}`);
+    }, 1200);
+  };
+
   return (
     <>
       <div
@@ -32,7 +36,7 @@ export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
       />
 
       <div
-        className={`bg-black fixed inset-0 z-10 transition-all duration-500 flex flex-col ${
+        className={`bg-black fixed inset-0 z-50 transition-all duration-500 flex flex-col ${
           menuOpen ? "h-full delay-300" : "h-0 delay-500"
         }`}
       >
@@ -63,8 +67,9 @@ export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
           <ul
             className={`max-w-[90%] w-full mx-auto ${bagel.className} text-3xl md:text-4xl lg:text-5xl flex flex-col gap-5 uppercase text-primary`}
           >
-            {menuItems.map((item) => (
+            {MENU_ITEMS.map((item) => (
               <li
+                onClick={() => closeMenuFromLink(item.label)}
                 key={item.id}
                 className="py-10 px-1 tracking-wider cursor-pointer group"
               >

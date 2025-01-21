@@ -3,6 +3,7 @@ import { bagel } from "@/fonts/fonts";
 
 interface ButtonProps {
   children: ReactNode;
+  type?: "button" | "submit";
   backgroundColor?: string;
   textColor?: string;
   padding?: string;
@@ -10,6 +11,7 @@ interface ButtonProps {
   borderRadius?: string;
   onClick?: () => void;
   className?: string;
+  cursor?: string;
 }
 
 export default function Button({
@@ -18,7 +20,9 @@ export default function Button({
   textColor = "white",
   padding = "10px 20px",
   borderRadius = "0px",
+  type = "button",
   fontSize = "18px",
+  cursor = "pointer",
   onClick,
   className = "",
 }: ButtonProps) {
@@ -29,11 +33,12 @@ export default function Button({
     borderRadius,
     fontSize,
     border: "none",
-    cursor: "pointer",
+    cursor,
     width: "100%",
   };
   return (
     <button
+      type={type}
       style={style}
       className={`${bagel.className} ${className}`}
       onClick={onClick}
