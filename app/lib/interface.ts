@@ -20,3 +20,10 @@ export interface fullBlog {
   tags: string[];
   content: PortableTextBlock;
 }
+
+export enum BlogTags {
+  ALL = "all",
+  LANGUAGE = "language",
+  DATABASES = "Databases",
+  SECURITY = "Security",
+}

@@ -10,12 +10,12 @@ export default function Footer() {
       <div className="min-h-96 max-w-[1728px] lg:px-4 mt-10 mb-56 xl:mb-72 mx-auto flex flex-col items-center justify-center">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 w-full">
           <div className="text-white space-y-10 lg:space-y-5 lg:w-1/2 lg:max-w-[500px]">
-            <h3
+            <p
               className={`${bagel.className} bg-white lg:bg-black text-black lg:text-[#FDF7EC] h-20 lg:h-auto flex items-center justify-center lg:justify-start text-xl relative`}
             >
               Let’s Build the Future Together
               <span className="absolute w-5 h-5 bg-white -top-2.5 rotate-45 lg:hidden" />
-            </h3>
+            </p>
 
             <p className="px-4 lg:px-0 text-sm text-[#FFFFFF]">
               I’m always ready for new challenges and exciting projects. Whether

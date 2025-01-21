@@ -6,12 +6,20 @@ import Button from "../components/ui/Button";
 import BlogsTags from "../components/BlogsTags";
 import Footer from "../components/Footer";
 import { getBlogs } from "../actions";
-import { BlogCard } from "../lib/interface";
+import { BlogCard, BlogTags } from "../lib/interface";
 import { getUrl } from "@/utils";
+import LastArticle from "../components/LastArticle";
+import BlogCardView from "../components/BlogCardView";
 
-export default async function Page() {
-  const blogs: BlogCard[] = await getBlogs();
+type Props = {
+  searchParams: { cat?: string };
+};
 
+export default async function Page({ searchParams }: Props) {
+  const { cat } = searchParams;
+  const category = cat as BlogTags;
+
+  const blogs: BlogCard[] = await getBlogs({ category });
   return (
     <>
       <div className="max-w-[1728px] mx-auto px-4">
@@ -25,7 +33,7 @@ export default async function Page() {
 
         <div className="mt-20 max-w-[1500px] mx-auto space-y-10">
           {/* Last article */}
-          <div className="space-y-10">
+          {/* <div className="space-y-10">
             <h2 className={`${bagel.className} text-3xl md:text-5xl uppercase`}>
               last article
             </h2>
@@ -79,7 +87,8 @@ export default async function Page() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <LastArticle blog={blogs[0]} />
 
           <div className="bg-gray-300 w-full h-[1px]" />
           {/* Articles */}
@@ -97,49 +106,15 @@ export default async function Page() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 xl:gap-x-20 gap-y-10">
-              {blogs.map((blog) => (
-                <Link
-                  key={blog._id}
-                  href={`/blogs/${blog.slug}`}
-                  className="hover:scale-105 transition-all ease-out"
-                >
-                  <article className="flex flex-col gap-2 cursor-pointer">
-                    <div className="relative min-w-[200px] h-[300px]">
-                      <Image
-                        src={getUrl(blog.image)}
-                        fill
-                        alt={blog.title}
-                        className="object-cover rounded-xl"
-                      />
-                    </div>
-                    <div className="flex items-start gap-2 justify-between">
-                      <h2 className={`${bagel.className} text-xl`}>
-                        {blog.title}
-                      </h2>
-                      <span
-                        className={`whitespace-nowrap mt-1 bg-[#D9D9D9] text-[#565555] px-2 rounded-full text-sm ${bagel.className}`}
-                      >
-                        {blog.publishedAt.split("T")[0]}
-                      </span>
-                    </div>
-                    <div>
-                      {blog.tags.map((tag, index) => (
-                        <span key={tag} className="text-[#656363] text-sm">
-                          {tag}
-                          {index !== blog.tags.length - 1 && (
-                            <span className="mx-1">|</span>
-                          )}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="">
-                      <p className="line-clamp-2 tracking-wide text-sm text-[#555353]">
-                        {blog.description}
-                      </p>
-                    </div>
-                  </article>
-                </Link>
-              ))}
+              {blogs.length === 0 && (
+                <div className="flex justify-center items-center col-span-3 min-h-96">
+                  <p className="text-2xl">No articles found</p>
+                </div>
+              )}
+              {blogs.length > 0 &&
+                blogs.map((blog) => (
+                  <BlogCardView key={blog._id} blog={blog} />
+                ))}
             </div>
           </div>
 

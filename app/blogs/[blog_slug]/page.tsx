@@ -1,13 +1,13 @@
 import { getBlogBySlug } from "@/app/actions";
 import BlogContent from "@/app/components/BlogContent";
 import Footer from "@/app/components/Footer";
+import ProgressScrollBlog from "@/app/components/ProgressScrollBlog";
 import { ARTICLES } from "@/app/constants/articles";
 import { fullBlog } from "@/app/lib/interface";
 import { bagel } from "@/fonts/fonts";
 import { getUrl } from "@/utils";
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,32 +56,19 @@ export default async function Page({
           </div>
 
           <div className="hidden lg:flex  w-1/4 sticky top-10 justify-center">
-            <div className="relative flex flex-col gap-5 w-fit ">
-              <div className="absolute -left-5 top-0 bottom-0 bg-gray-400 h-full w-[1px]" />
-              <div className="absolute w-7 h-7 -left-[34px] top-0 bg-black rounded-full" />
-
-              <p className={`${bagel.className} text-3xl relative -mt-1`}>
-                On This Page
-              </p>
-              <ul className="flex gap-3 flex-col">
-                <li>First Part</li>
-                <li>Second Part</li>
-                <li>Second Part</li>
-                <li>Second Part</li>
-              </ul>
-            </div>
+            <ProgressScrollBlog />
           </div>
         </div>
 
         <div className="flex items-center gap-3 md:gap-10 relative">
           <div className="bottom-0 absolute w-full h-[1px] bg-gray-300" />
-          <h2 className={`${bagel.className}`}>
+          <p className={`${bagel.className}`}>
             <span className="hidden md:block text-xl">Share this article</span>
             <FontAwesomeIcon
               icon={faShareAlt}
               className="w-5 h-5 p-1 md:hidden bg-black text-primary rounded-full"
             />
-          </h2>
+          </p>
           <ul className="flex items-center gap-2 md:gap-5 text-sm md:text-base mt-1 md:mt-2">
             <li>Facebook</li>
             <li>Instagram</li>
@@ -93,9 +80,9 @@ export default async function Page({
 
         {/* KEEP READING */}
         <div className="space-y-10 pb-10">
-          <h2 className={`${bagel.className} uppercase text-4xl`}>
+          <p className={`${bagel.className} uppercase text-4xl`}>
             Keep Reading
-          </h2>
+          </p>
 
           {/* WIP:Create A card Component for blog */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 xl:gap-x-20 gap-y-10">
@@ -115,9 +102,9 @@ export default async function Page({
                     />
                   </div>
                   <div className="flex items-start gap-2 justify-between">
-                    <h2 className={`${bagel.className} text-xl`}>
+                    <h1 className={`${bagel.className} text-xl`}>
                       {article.title}
-                    </h2>
+                    </h1>
                     <span
                       className={`whitespace-nowrap mt-1 bg-[#D9D9D9] text-[#565555] px-2 rounded-full text-sm ${bagel.className}`}
                     >

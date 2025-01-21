@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 import { client } from "../lib/sanity";
+import { BlogTags } from "../lib/interface";
 
 // SEND EMAIL
 export const sendEmail = async ({
@@ -35,19 +36,33 @@ export const sendEmail = async ({
 };
 
 // GET ALL BLOGS
-export const getBlogs = async () => {
-  const query = `*[_type == "blog"] | order(publishedAt desc) { 
-  _id,
-  title,
-  "image": coverImage,
-  tags,
-  "slug": slug.current,
-  description,
-  publishedAt,
-}`;
+export const getBlogs = async ({ category }: { category?: BlogTags }) => {
+  let query: string;
 
-  console.log("get blogs");
+  console.log("category", category);
+  if (!category || category === BlogTags.ALL) {
+    query = `*[_type == "blog"] | order(publishedAt desc) { 
+    _id,
+    title,
+    "image": coverImage,
+    tags,
+    "slug": slug.current,
+    description,
+    publishedAt,
+  }`;
+  } else {
+    query = `*[_type == "blog" && "${category}" in tags] | order(publishedAt desc) { 
+      _id,
+      title,
+      "image": coverImage,
+      tags,
+      "slug": slug.current,
+      description,
+      publishedAt,
+    }`;
+  }
   const data = await client.fetch(query);
+  console.log("data", data);
   return data;
 };
 

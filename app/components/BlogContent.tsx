@@ -2,7 +2,7 @@ import { PortableText } from "next-sanity";
 import { fullBlog } from "../lib/interface";
 import Image from "next/image";
 import { getUrl } from "@/utils";
-import { codeToHtml, createHighlighter, getHighlighter } from "shiki";
+import { createHighlighter } from "shiki";
 
 export default function BlogContent({
   content,
