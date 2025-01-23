@@ -1,27 +1,29 @@
 import React from "react";
-import { BlogCard } from "../lib/interface";
+import { BlogTags } from "../lib/interface";
 import { bagel } from "@/fonts/fonts";
 import Image from "next/image";
 import { getUrl } from "@/utils";
 import Button from "./ui/Button";
+import { getLastBlog } from "../actions";
 
 type Props = {
-  blog: BlogCard;
+  category: BlogTags;
 };
 
-const LastArticle = ({ blog }: Props) => {
+const LastArticle = async ({ category }: Props) => {
+  const lastBlog = await getLastBlog({ category });
   return (
     <div className="space-y-10">
       <h2 className={`${bagel.className} text-3xl md:text-5xl uppercase`}>
         last article
       </h2>
 
-      {blog && (
+      {lastBlog && (
         <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 justify-start">
           <div className="flex-1">
             <Image
-              src={getUrl(blog.image)}
-              alt={blog.description}
+              src={getUrl(lastBlog.image)}
+              alt={lastBlog.description}
               width={800}
               height={800}
               className="rounded-lg object-cover"
@@ -32,26 +34,26 @@ const LastArticle = ({ blog }: Props) => {
               <p
                 className={`bg-[#D9D9D9] w-fit ${bagel.className} px-2 py-1 rounded-full`}
               >
-                {blog.publishedAt.split("T")[0]}
+                {lastBlog.publishedAt.split("T")[0]}
               </p>
 
               <h1
                 className={`text-xl md:text-4xl text-secondary ${bagel.className}`}
               >
-                {blog.title}
+                {lastBlog.title}
               </h1>
               <p className="text-sm md:text-base line-clamp-2">
-                {blog.description}
+                {lastBlog.description}
               </p>
 
               <div className="flex gap-2 mt-4">
-                {blog.tags.map((tag, index) => (
+                {lastBlog.tags.map((tag, index) => (
                   <p
                     key={tag}
                     className={`text-gray-600 text-sm ${bagel.className}`}
                   >
                     {tag}
-                    {index !== blog.tags.length - 1 && (
+                    {index !== lastBlog.tags.length - 1 && (
                       <span className="ml-2">|</span>
                     )}
                   </p>
@@ -68,7 +70,7 @@ const LastArticle = ({ blog }: Props) => {
         </div>
       )}
 
-      {!blog && (
+      {!lastBlog && (
         <p className="min-h-56 flex items-center justify-center text-xl">
           No blog found
         </p>

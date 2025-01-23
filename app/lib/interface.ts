@@ -23,7 +23,7 @@ export interface fullBlog {
 
 export enum BlogTags {
   ALL = "all",
-  LANGUAGE = "language",
-  DATABASES = "Databases",
-  SECURITY = "Security",
+  LANGUAGE = "programing languages",
+  DATABASES = "databases",
+  SECURITY = "security",
 }

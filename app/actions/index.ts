@@ -2,7 +2,9 @@
 
 import { Resend } from "resend";
 import { client } from "../lib/sanity";
-import { BlogTags } from "../lib/interface";
+import { BlogCard, BlogTags } from "../lib/interface";
+import { groq } from "next-sanity";
+import { MAX_ITEMS } from "../constants/blogs";
 
 // SEND EMAIL
 export const sendEmail = async ({
@@ -35,21 +37,24 @@ export const sendEmail = async ({
   }
 };
 
-// GET ALL BLOGS
-export const getBlogs = async ({ category }: { category?: BlogTags }) => {
+// GET LAST BLOG
+export const getLastBlog = async ({
+  category,
+}: {
+  category?: BlogTags;
+}): Promise<BlogCard> => {
   let query: string;
 
-  console.log("category", category);
   if (!category || category === BlogTags.ALL) {
     query = `*[_type == "blog"] | order(publishedAt desc) { 
-    _id,
-    title,
-    "image": coverImage,
-    tags,
-    "slug": slug.current,
-    description,
-    publishedAt,
-  }`;
+      _id,
+      title,
+      "image": coverImage,
+      tags,
+      "slug": slug.current,
+      description,
+      publishedAt,
+    }[0]`;
   } else {
     query = `*[_type == "blog" && "${category}" in tags] | order(publishedAt desc) { 
       _id,
@@ -59,11 +64,49 @@ export const getBlogs = async ({ category }: { category?: BlogTags }) => {
       "slug": slug.current,
       description,
       publishedAt,
-    }`;
+    }[0]`;
   }
+
   const data = await client.fetch(query);
-  console.log("data", data);
   return data;
+};
+
+export const getBlogCount = async ({
+  category,
+}: {
+  category: string;
+}): Promise<number> => {
+  const query = `count(*[_type == "blog" ${category && category !== BlogTags.ALL ? `&& "${category}" in tags` : ""}])`;
+  const count = await client.fetch(query);
+  return count;
+};
+
+export const getBlogs = async ({
+  category,
+  page,
+}: {
+  category?: string | null;
+  page?: string;
+}): Promise<{
+  data: BlogCard[];
+}> => {
+  const currentPage = page ? Math.max(1, parseInt(page)) : 1;
+  const offset = (currentPage - 1) * MAX_ITEMS;
+
+  const query = groq`
+    *[_type == "blog" ${category && category !== BlogTags.ALL ? `&& "${category}" in tags` : ""}] | order(publishedAt desc) { 
+      _id,
+      title,
+      "image": coverImage,
+      tags,
+      "slug": slug.current,
+      description,
+      publishedAt,
+    }[${offset}...${offset + MAX_ITEMS}]
+  `;
+
+  const data = await client.fetch(query);
+  return { data };
 };
 
 // GET BLOG BY SLUG

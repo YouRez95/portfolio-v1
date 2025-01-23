@@ -1,28 +1,33 @@
-"use client";
-import { useSearchParams } from "next/navigation";
+// "use client";
+// import { useSearchParams } from "next/navigation";
+import { CATEGORY_BLOGS } from "../constants/blogs";
 import Button from "./ui/Button";
 import Link from "next/link";
 
-export default function BlogsTags() {
-  const params = useSearchParams();
-  const category = params.get("cat") || "all";
+type Props = {
+  category: string;
+};
+
+export default function BlogsTags({ category }: Props) {
   return (
     <>
-      {["ALL", "language", "Databases", "Security", "AI"].map((tag) => (
-        <Link href={`/blogs/?cat=${tag.toLowerCase()}`} key={tag}>
+      {CATEGORY_BLOGS.map((cat) => (
+        <Link href={`/blogs/?cat=${cat.category}`} key={cat.id}>
           <Button
             fontSize="15px"
             padding="10px 15px"
             backgroundColor={
-              category?.toLowerCase() === tag.toLowerCase()
+              category?.toLowerCase() === cat.category.toLowerCase()
                 ? "black"
                 : "#D9D9D9"
             }
             textColor={
-              category?.toLowerCase() === tag.toLowerCase() ? "white" : ""
+              category?.toLowerCase() === cat.category.toLowerCase()
+                ? "white"
+                : ""
             }
           >
-            {tag}
+            {cat.category}
           </Button>
         </Link>
       ))}
