@@ -2,7 +2,12 @@
 
 import { Resend } from "resend";
 import { client } from "../lib/sanity";
-import { BlogCard, BlogTags } from "../lib/interface";
+import {
+  BlogCard,
+  BlogTags,
+  ProjectCard,
+  ProjectDetail,
+} from "../lib/interface";
 import { groq } from "next-sanity";
 import { MAX_ITEMS } from "../constants/blogs";
 
@@ -71,6 +76,22 @@ export const getLastBlog = async ({
   return data;
 };
 
+// GET THREE BLOGS
+
+export const getThreeBlogs = async (): Promise<BlogCard[]> => {
+  const query = groq`
+    *[_type == "blog"] | order(publishedAt desc) { 
+      _id,
+      title,
+      "image": coverImage,
+      "slug": slug.current,
+    }[0...3]
+  `;
+
+  const data = await client.fetch(query);
+  return data;
+};
+
 export const getBlogCount = async ({
   category,
 }: {
@@ -123,6 +144,110 @@ export const getBlogBySlug = async (slug: string) => {
   content
 }
   `;
+  const data = await client.fetch(query);
+  return data;
+};
+
+// GET PROJECTS
+export const getProjects = async (): Promise<ProjectCard[]> => {
+  const query = `
+  *[_type == "project"] | order(order asc) { 
+  order,
+  brand,
+  url,
+  applicationType,
+  techs,
+  image,
+  description,
+}
+  `;
+  const data = await client.fetch(query);
+  return data;
+};
+
+// GET SINGLE PROJECT
+export const getSingleProject = async (
+  projectTitle: string
+): Promise<ProjectDetail> => {
+  const query = `
+  *[_type == "projectDetail" && title == "${projectTitle}"] {
+  description,
+    keyFeatures,
+    title,
+    github,
+    live,
+    stack,
+    applicationType,
+    responsive,
+    video,
+    role
+}
+  `;
+
+  const data = await client.fetch(query);
+  return data[0];
+};
+
+// ADD FEEDBACK
+
+type FeedbackData = {
+  name: string;
+  email: string;
+  message: string;
+  projectName: string;
+  rating: number;
+  avatar: number;
+};
+
+export const addFeedback = async ({
+  avatar,
+  email,
+  message,
+  name,
+  projectName,
+  rating,
+}: FeedbackData) => {
+  console.log("ok");
+  if (!name || !email || !message || !projectName || !rating || !avatar) {
+    return { success: false, error: "All fields are required." };
+  }
+
+  try {
+    const data = await client.create({
+      _type: "feedback",
+      name,
+      email,
+      message,
+      projectName,
+      rating,
+      avatar,
+      createdAt: new Date().toISOString(),
+      approved: false,
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error adding feedback:", error);
+    return { success: false, error: "Failed to add feedback." };
+  }
+};
+
+// GET FEEDBACKS
+export type GetFeedbacks = FeedbackData & { _id: string; createdAt: string };
+
+export const getFeedbacks = async (): Promise<GetFeedbacks[]> => {
+  const query = `
+  *[_type == "feedback" && approved == true] | order(createdAt desc) { 
+  _id,
+  name,
+  email,
+  message,
+  projectName,
+  rating,
+  avatar,
+  createdAt,
+}
+  `;
+
   const data = await client.fetch(query);
   return data;
 };

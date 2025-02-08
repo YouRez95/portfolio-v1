@@ -12,6 +12,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   cursor?: string;
+  loading?: boolean;
 }
 
 export default function Button({
@@ -25,6 +26,7 @@ export default function Button({
   cursor = "pointer",
   onClick,
   className = "",
+  loading,
 }: ButtonProps) {
   const style: React.CSSProperties = {
     backgroundColor,
@@ -42,6 +44,7 @@ export default function Button({
       style={style}
       className={`${bagel.className} ${className}`}
       onClick={onClick}
+      disabled={loading}
     >
       {children}
     </button>

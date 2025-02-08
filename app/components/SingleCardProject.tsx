@@ -1,9 +1,10 @@
 import { bagel } from "@/fonts/fonts";
+import { getUrl } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 
 type ProjectCardProps = {
-  id: number;
+  order: number;
   url: string;
   image: string;
   applicationType: string;
@@ -13,7 +14,7 @@ type ProjectCardProps = {
 };
 
 export default function SingleCardProject({
-  id,
+  order,
   image,
   applicationType,
   techs,
@@ -21,7 +22,7 @@ export default function SingleCardProject({
   description,
   url,
 }: ProjectCardProps) {
-  if (id % 3 === 0) {
+  if (order % 3 === 0) {
     return (
       <div className="min-h-[600px] h-full w-full flex flex-col md:flex-row gap-10 lg:gap-20 col-span-2">
         <div className="w-full order-2 md:w-[60%] lg:w-1/2 flex flex-col px-2 space-y-44">
@@ -40,12 +41,18 @@ export default function SingleCardProject({
           <div className="space-y-5">
             <h2 className={`${bagel.className} text-5xl`}>{brand}</h2>
             <p className="text-xl">{description}</p>
+            <Link
+              href={url}
+              className="inline-block text-secondary underline my-2"
+            >
+              View Detail
+            </Link>
           </div>
         </div>
 
         <div className="w-full md:w-[40%] lg:w-1/2 bg-red-500 relative min-h-96">
           <Image
-            src={image}
+            src={getUrl(image)}
             alt="yalla job"
             fill
             className="object-cover object-[70%]"
@@ -61,7 +68,12 @@ export default function SingleCardProject({
       className={`h-[300px] md:h-[500px] lg:h-[400px] xl:h-[500px] w-full relative group cursor-pointer`}
     >
       <div className="bg-gradient-1 w-full h-full flex items-center justify-center">
-        <Image src={image} alt="project logo" fill className="object-cover" />
+        <Image
+          src={getUrl(image)}
+          alt="project logo"
+          fill
+          className="object-cover"
+        />
       </div>
 
       <div className="absolute inset-0 bg-black text-white p-10 group-hover:opacity-0 transition-all duration-500 ease-in-out">

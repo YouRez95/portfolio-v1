@@ -6,10 +6,11 @@ import {
   faFileCode,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
-import { PROJECTS } from "@/app/constants/projects";
 import SingleCardProject from "../SingleCardProject";
+import { getProjects } from "@/app/actions";
 
-export default function Projects() {
+export default async function Projects() {
+  const projects = await getProjects();
   return (
     <section
       id="projects"
@@ -44,8 +45,8 @@ export default function Projects() {
       </div>
       <div className="flex flex-col gap-20">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-20 items-center justify-center relative">
-          {PROJECTS.map((project) => (
-            <SingleCardProject key={project.id} {...project} />
+          {projects.map((project) => (
+            <SingleCardProject key={project.order} {...project} />
           ))}
         </div>
       </div>
