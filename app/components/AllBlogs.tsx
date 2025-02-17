@@ -1,8 +1,7 @@
 import React from "react";
-import { BlogCard, BlogTags } from "../lib/interface";
+import { BlogTags } from "../lib/interface";
 import { getBlogCount, getBlogs } from "../actions";
 import BlogCardView from "./BlogCardView";
-import Link from "next/link";
 import Pagination from "./Pagination";
 
 type Props = {

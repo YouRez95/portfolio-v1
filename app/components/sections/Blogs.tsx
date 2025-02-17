@@ -14,8 +14,6 @@ import { getUrl } from "@/utils";
 
 export default async function Blogs() {
   const blogs = await getThreeBlogs();
-  console.log(blogs);
-
   return (
     <section
       id="blogs"

@@ -8,7 +8,6 @@ import Link from "next/link";
 
 const LastArticle = async () => {
   const lastBlog = await getLastBlog();
-  console.log("Rendering LastArticle");
   return (
     <div className="space-y-10">
       <h2 className={`${bagel.className} text-3xl md:text-5xl uppercase`}>

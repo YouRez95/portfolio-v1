@@ -1,6 +1,4 @@
 import { bagel } from "@/fonts/fonts";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBrain,
   faFileCode,
@@ -8,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SingleCardProject from "../SingleCardProject";
 import { getProjects } from "@/app/actions";
+import FontAwesomeIconClient from "../FontAwesomeIconClient";
 
 export default async function Projects() {
   const projects = await getProjects();
@@ -22,18 +21,27 @@ export default async function Projects() {
         >
           <span className="flex items-center justify-center gap-1 lg:gap-3">
             <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
-              <FontAwesomeIcon icon={faFileCode} className="text-secondary" />
+              <FontAwesomeIconClient
+                icon={faFileCode}
+                className="text-secondary"
+              />
             </span>
             Code,
             <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
-              <FontAwesomeIcon icon={faBrain} className="text-secondary" />
+              <FontAwesomeIconClient
+                icon={faBrain}
+                className="text-secondary"
+              />
             </span>
             Creativity
           </span>
           <span className="flex items-center justify-center gap-1 lg:gap-3">
             And
             <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
-              <FontAwesomeIcon icon={faUserGroup} className="text-secondary" />
+              <FontAwesomeIconClient
+                icon={faUserGroup}
+                className="text-secondary"
+              />
             </span>
             Collaboration
           </span>

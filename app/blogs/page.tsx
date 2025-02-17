@@ -14,7 +14,7 @@ type Props = {
 export default async function Page({ searchParams }: Props) {
   const params = await searchParams;
   const { cat, page } = params;
-  let category: BlogTags = cat ? (cat as BlogTags) : BlogTags.ALL;
+  const category: BlogTags = cat ? (cat as BlogTags) : BlogTags.ALL;
 
   return (
     <>

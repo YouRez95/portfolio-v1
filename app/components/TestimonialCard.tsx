@@ -25,7 +25,6 @@ export const TestimonialCard = ({
   index: number;
   className?: string;
 }) => {
-  console.log("testimonial", testimonial);
   return (
     <div
       className={`min-w-[290px] sm:min-w-[400px] flex flex-col gap-5 p-3 ${getCardStyles(

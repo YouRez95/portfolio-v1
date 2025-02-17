@@ -2,7 +2,6 @@ import { bagel } from "@/fonts/fonts";
 import Link from "next/link";
 import React from "react";
 import Footer from "../components/Footer";
-import LastArticle from "../components/LastArticle";
 
 type Props = {
   children: React.ReactNode;

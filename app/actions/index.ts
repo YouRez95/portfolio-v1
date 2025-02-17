@@ -209,13 +209,12 @@ export const addFeedback = async ({
   projectName,
   rating,
 }: FeedbackData) => {
-  console.log("ok");
   if (!name || !email || !message || !projectName || !rating || !avatar) {
     return { success: false, error: "All fields are required." };
   }
 
   try {
-    const data = await client.create({
+    await client.create({
       _type: "feedback",
       name,
       email,
