@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./ui/Button";
 import { bagel } from "@/fonts/fonts";
-import { sendEmail } from "../actions";
 import { useContact } from "../hooks/useContact";
 
 export default function Contact() {
@@ -12,7 +11,6 @@ export default function Contact() {
     success,
     setSuccess,
     loading,
-    setLoading,
     errorMsg,
     setErrorMsg,
     emailRef,
@@ -32,7 +30,7 @@ export default function Contact() {
       const timer = setTimeout(() => closeModalAndResetStates(), 3000);
       return () => clearTimeout(timer);
     }
-  }, [success]);
+  }, [success, closeModalAndResetStates]);
 
   useEffect(() => {
     if (openModal) {
