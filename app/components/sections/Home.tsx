@@ -2,6 +2,7 @@ import { bagel } from "@/fonts/fonts";
 import Button from "../ui/Button";
 import ImageHeroGrid from "../ImageHeroGrid";
 import Contact from "../Contact";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -23,9 +24,16 @@ export default function Home() {
             passion for innovation.
           </p>
           <div className="flex gap-10 max-w-80">
-            <Button fontSize="14px" backgroundColor="black">
-              Download CV
-            </Button>
+            <a
+              className="w-full"
+              href="/mine/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button fontSize="14px" backgroundColor="black">
+                Download CV
+              </Button>
+            </a>
             <Contact />
           </div>
 
@@ -47,10 +55,15 @@ export default function Home() {
         </div> */}
         </div>
 
-        {/* <div className="bg-red-500 -translate-x-4 lg:-translate-x-10 flex-1 min-h-[500px] sm:min-h-[700px] lg:min-h-min xl:w-1/2 lg:order-1"> */}
-        <div className="-translate-x-4 lg:-translate-x-10 flex-1 flex justify-center items-start min-h-[500px] sm:min-h-[600px] lg:min-h-min xl:w-1/2 lg:order-1">
+        <div className="-translate-x-4 lg:-translate-x-10 flex-1 flex justify-center items-start lg:min-h-min xl:w-1/2 lg:order-1">
           {/* Image */}
-          <ImageHeroGrid />
+          <Image
+            src="/mine/hero-image.jpg"
+            alt="image hero grid"
+            width={800}
+            height={800}
+            className="object-cover object-[20%_30%] max-h-[420px] lg:max-h-[600px] md:max-h-[700px]"
+          />
         </div>
       </section>
     </>

@@ -21,18 +21,18 @@ export default async function Projects() {
           className={`${bagel.className} bg-black lg:bg-transparent w-full py-5 lg:py-0 text-primary lg:text-black text-3xl ml:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl`}
         >
           <span className="flex items-center justify-center gap-1 lg:gap-3">
-            <span className="relative w-10 h-10 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
+            <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
               <FontAwesomeIcon icon={faFileCode} className="text-secondary" />
             </span>
             Code,
-            <span className="relative w-10 h-10 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
+            <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
               <FontAwesomeIcon icon={faBrain} className="text-secondary" />
             </span>
             Creativity
           </span>
           <span className="flex items-center justify-center gap-1 lg:gap-3">
             And
-            <span className="relative w-10 h-10 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
+            <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center">
               <FontAwesomeIcon icon={faUserGroup} className="text-secondary" />
             </span>
             Collaboration

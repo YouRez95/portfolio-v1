@@ -1,4 +1,3 @@
-import { TESTIMONIALS } from "@/app/constants/testimonials";
 import { TestimonialHeader } from "../TestimonialHeader";
 import { TestimonialCard } from "../TestimonialCard";
 import { TestimonialsFooter } from "../TestimonialFooter";
@@ -6,7 +5,6 @@ import { getFeedbacks } from "@/app/actions";
 
 export default async function Testimonials() {
   const feedbacks = await getFeedbacks();
-  console.log(feedbacks);
   return (
     <section className="lg:max-w-[1728px] mx-auto lg:space-y-10">
       <div className="flex flex-col lg:flex-row gap-10 lg:h-[600px] xl:h-[800px]">

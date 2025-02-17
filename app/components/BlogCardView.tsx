@@ -26,7 +26,7 @@ const BlogCardView = ({ blog }: Props) => {
           />
         </div>
         <div className="flex items-start gap-2 justify-between">
-          <h2 className={`${bagel.className} text-xl`}>{blog.title}</h2>
+          <p className={`${bagel.className} text-xl`}>{blog.title}</p>
           <span
             className={`whitespace-nowrap mt-1 bg-[#D9D9D9] text-[#565555] px-2 rounded-full text-sm ${bagel.className}`}
           >

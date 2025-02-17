@@ -1,17 +1,14 @@
 import React from "react";
-import { BlogTags } from "../lib/interface";
 import { bagel } from "@/fonts/fonts";
 import Image from "next/image";
 import { getUrl } from "@/utils";
 import Button from "./ui/Button";
 import { getLastBlog } from "../actions";
+import Link from "next/link";
 
-type Props = {
-  category: BlogTags;
-};
-
-const LastArticle = async ({ category }: Props) => {
-  const lastBlog = await getLastBlog({ category });
+const LastArticle = async () => {
+  const lastBlog = await getLastBlog();
+  console.log("Rendering LastArticle");
   return (
     <div className="space-y-10">
       <h2 className={`${bagel.className} text-3xl md:text-5xl uppercase`}>
@@ -62,9 +59,11 @@ const LastArticle = async ({ category }: Props) => {
             </div>
 
             <div className="w-fit mt-5 md:mt-0">
-              <Button backgroundColor="black" padding="10px 50px">
-                Read
-              </Button>
+              <Link href={`/blogs/${lastBlog.slug}`} className="">
+                <Button backgroundColor="black" padding="10px 50px">
+                  Read
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

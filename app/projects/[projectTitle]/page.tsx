@@ -32,10 +32,11 @@ export default async function Page({
 
       <div className="flex flex-col items-center justify-center">
         <video
-          className="w-auto h-full shadow-lg rounded-2xl min-h-[400px] max-h-[600px]"
+          className="w-auto h-full shadow-lg rounded-2xl md:min-h-[400px] max-h-[600px]"
           autoPlay
           loop
           muted
+          playsInline
         >
           <source src={getVideoUrl(project.video) as string} type="video/mp4" />
           Your browser does not support the video tag.
@@ -88,7 +89,7 @@ export default async function Page({
         <h2 className={`${bagel.className} text-2xl lg:text-3xl`}>
           Responsive Design
         </h2>
-        <div className="flex flex-col md:flex-row gap-20 items-center justify-center">
+        <div className="flex flex-col xl:flex-row gap-20 items-center justify-start">
           {project.responsive.map((image, index) => (
             <Image
               key={index}

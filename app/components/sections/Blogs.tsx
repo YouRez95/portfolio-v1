@@ -26,7 +26,7 @@ export default async function Blogs() {
           className={`${bagel.className} flex items-end justify-center text-3xl ml:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl`}
         >
           Latest
-          <span className="relative w-10 h-10 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
+          <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
             <FontAwesomeIcon icon={faLightbulb} className="text-secondary" />
           </span>
           Thoughts
@@ -35,7 +35,7 @@ export default async function Blogs() {
           className={`${bagel.className} flex items-end justify-center text-3xl ml:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl`}
         >
           Just for
-          <span className="relative w-10 h-10 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
+          <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
             <FontAwesomeIcon icon={faHeart} className="text-secondary" />
           </span>
           You

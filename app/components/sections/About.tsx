@@ -52,7 +52,7 @@ export default function About() {
 
         <div className="w-full h-[500px] lg:h-[700px] relative">
           <h1
-            className={`${bagel.className} absolute z-10 top-[50%] left-[10vw] -translate-y-[50%] hidden md:block text-7xl lg:text-8xl xl:text-9xl text-center tracking-wide`}
+            className={`${bagel.className} absolute z-10 top-[50%] left-[10vw] -translate-y-[50%] hidden md:block md:text-7xl lg:text-8xl xl:text-9xl text-center tracking-wide`}
           >
             I Build Ideas <br />
             into{" "}
@@ -62,7 +62,7 @@ export default function About() {
           </h1>
           <div className=" h-full w-[100%] md:w-[60%] ml-auto relative">
             <Image
-              src="/projects/image-about.png"
+              src="/mine/about.jpg"
               alt="image about"
               fill
               className="object-cover px-0"
@@ -72,7 +72,7 @@ export default function About() {
 
         <div className="grid gap-10 px-5">
           <h1
-            className={`${bagel.className} text-6xl text-center tracking-wide block md:hidden`}
+            className={`${bagel.className} text-5xl text-center tracking-wide block md:hidden`}
           >
             I Build Ideas <br />
             into{" "}

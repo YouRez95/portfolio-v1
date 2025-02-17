@@ -14,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${prozaLibre.className} overflow-x-hidden bg-[#FDF7EC]`}
-      >
+      <body className={`${prozaLibre.className} overflow-x-hidden bg-primary`}>
         {children}
       </body>
     </html>

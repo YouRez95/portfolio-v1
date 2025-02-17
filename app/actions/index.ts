@@ -43,15 +43,8 @@ export const sendEmail = async ({
 };
 
 // GET LAST BLOG
-export const getLastBlog = async ({
-  category,
-}: {
-  category?: BlogTags;
-}): Promise<BlogCard> => {
-  let query: string;
-
-  if (!category || category === BlogTags.ALL) {
-    query = `*[_type == "blog"] | order(publishedAt desc) { 
+export const getLastBlog = async (): Promise<BlogCard> => {
+  const query = `*[_type == "blog"] | order(publishedAt desc) { 
       _id,
       title,
       "image": coverImage,
@@ -60,17 +53,6 @@ export const getLastBlog = async ({
       description,
       publishedAt,
     }[0]`;
-  } else {
-    query = `*[_type == "blog" && "${category}" in tags] | order(publishedAt desc) { 
-      _id,
-      title,
-      "image": coverImage,
-      tags,
-      "slug": slug.current,
-      description,
-      publishedAt,
-    }[0]`;
-  }
 
   const data = await client.fetch(query);
   return data;
@@ -143,6 +125,26 @@ export const getBlogBySlug = async (slug: string) => {
   tags,
   content
 }
+  `;
+  const data = await client.fetch(query);
+  return data;
+};
+
+//  GET BLOGS BY TAGS
+export const getBlogsByTags = async (
+  tags: string[],
+  currentSlug: string
+): Promise<BlogCard[]> => {
+  const query = `
+  *[_type == "blog" && count((tags[@ in ${JSON.stringify(tags)}])) > 0 && slug.current != '${currentSlug}'] | order(publishedAt desc) [0...3] { 
+    _id,
+    title,
+    "image": coverImage,
+    tags,
+    "slug": slug.current,
+    description,
+    publishedAt,
+  }
   `;
   const data = await client.fetch(query);
   return data;

@@ -25,13 +25,15 @@ export default function SingleCardProject({
   if (order % 3 === 0) {
     return (
       <div className="min-h-[600px] h-full w-full flex flex-col md:flex-row gap-10 lg:gap-20 col-span-2">
-        <div className="w-full order-2 md:w-[60%] lg:w-1/2 flex flex-col px-2 space-y-44">
+        <div className="w-full order-2 md:w-[60%] lg:w-1/2 flex flex-col px-2 space-y-10 lg:space-y-44">
           <div className="space-y-4">
             <div>
-              <h2 className="text-2xl font-semibold">{applicationType}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">
+                {applicationType}
+              </h2>
               <div className="w-full h-[2px] bg-black" />
             </div>
-            <div className="text-xl space-y-1 text-black/70 font-medium">
+            <div className="text-base md:text-xl space-y-1 text-black/70 font-medium">
               {techs.map((tech) => (
                 <p key={tech}>{tech}</p>
               ))}
@@ -39,8 +41,10 @@ export default function SingleCardProject({
           </div>
 
           <div className="space-y-5">
-            <h2 className={`${bagel.className} text-5xl`}>{brand}</h2>
-            <p className="text-xl">{description}</p>
+            <h2 className={`${bagel.className} text-3xl md:text-5xl`}>
+              {brand}
+            </h2>
+            <p className="text-base md:text-xl">{description}</p>
             <Link
               href={url}
               className="inline-block text-secondary underline my-2"

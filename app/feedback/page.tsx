@@ -199,16 +199,19 @@ export default function Page() {
           className={`h-full bg-primary lg:flex flex-col items-center transition-all justify-center ${success ? "w-full flex" : "w-1/2 hidden"}`}
         >
           <TestimonialCard
+            index={0}
             className="w-[80%] lg:w-[450px]  shadow-gray-950 shadow-2xl rounded-lg"
             testimonial={{
-              id: 1,
-              stars: rating,
-              text:
+              _id: "1",
+              rating: rating,
+              message:
                 feedback ||
                 "I love this product, it's very useful and easy to use",
               name: name || "John Doe",
-              job: owner || "CEO at X",
-              image: CHARACTERS[selectedProfil - 1].image,
+              projectName: owner || "CEO at X",
+              avatar: selectedProfil || 1,
+              email: email || "",
+              createdAt: new Date().toISOString(),
             }}
           />
 

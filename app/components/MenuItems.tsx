@@ -60,7 +60,7 @@ export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
           </div>
         </div>
         <nav
-          className={`flex-1 max-w-[1728px] mx-auto w-full items-center flex transition-all ${
+          className={`flex-1 max-w-[1728px] mx-auto w-full items-start mt-10 md:mt-0 md:items-center flex transition-all ${
             menuOpen ? "visible delay-1000 opacity-100" : "invisible opacity-0"
           }`}
         >
@@ -71,7 +71,7 @@ export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
               <li
                 onClick={() => closeMenuFromLink(item.label)}
                 key={item.id}
-                className="py-10 px-1 tracking-wider cursor-pointer group"
+                className="py-7 md:py-10 px-1 tracking-wider cursor-pointer group"
               >
                 <div className="relative">
                   <span className="relative">
@@ -79,7 +79,7 @@ export default function MenuItems({ menuOpen, setMenuOpen }: MenuProps) {
                     <div className="w-full h-4 bg-secondary absolute hidden group-hover:flex" />
                   </span>
                   <div
-                    className={`absolute bg-primary h-[2px] -bottom-8 left-0 right-0 ease-out duration-300 origin-center transition-transform
+                    className={`absolute bg-primary h-[2px] -bottom-4 md:-bottom-8 left-0 right-0 ease-out duration-300 origin-center transition-transform
                       ${menuOpen ? "scale-100 delay-[1.2s]" : "scale-0"}
                     `}
                   />
