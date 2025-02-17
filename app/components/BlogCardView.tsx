@@ -17,11 +17,12 @@ const BlogCardView = ({ blog }: Props) => {
       className="lg:hover:scale-105 transition-all ease-out"
     >
       <article className="flex flex-col gap-2 cursor-pointer">
-        <div className="relative min-w-[200px] h-[300px]">
+        <div className="relative">
           <Image
             src={getUrl(blog.image)}
-            fill
             alt={blog.title}
+            width={800}
+            height={800}
             className="object-cover rounded-xl"
           />
         </div>
