@@ -62,6 +62,7 @@ export default function Home() {
             alt="image hero grid"
             width={800}
             height={800}
+            priority
             className="object-cover object-[20%_30%] max-h-[420px] lg:max-h-[600px] md:max-h-[700px]"
           />
         </div>

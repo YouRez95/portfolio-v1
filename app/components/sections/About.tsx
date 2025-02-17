@@ -66,6 +66,7 @@ export default function About() {
               alt="image about"
               fill
               className="object-cover px-0"
+              priority
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Button from "./ui/Button";
 import { bagel } from "@/fonts/fonts";
 import { useContact } from "../hooks/useContact";
@@ -38,6 +38,12 @@ export default function Contact() {
     }
   }, [openModal, emailRef]);
 
+  useEffect(() => {
+    openModal
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [openModal]);
+
   return (
     <>
       <div
@@ -54,10 +60,10 @@ export default function Contact() {
           }`}
         >
           <div
-            className="absolute top-2 lg:top-5 right-5 cursor-pointer border border-black w-10 h-10 flex items-center justify-center rounded-full"
+            className="absolute top-4 lg:top-5 right-5 cursor-pointer border border-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full"
             onClick={closeModalAndResetStates}
           >
-            <span className={`${bagel.className} text-2xl `}>X</span>
+            <span className={`${bagel.className} text-xl md:text-2xl `}>X</span>
           </div>
           <h2
             className={`${bagel.className} flex items-center gap-2 py-3 lg:py-5 px-1 lg:px-10`}

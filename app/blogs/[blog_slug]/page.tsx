@@ -8,8 +8,8 @@ import { fullBlog } from "@/app/lib/interface";
 import { bagel } from "@/fonts/fonts";
 import { getUrl } from "@/utils";
 import { faShareAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import FontAwesomeIconClient from "@/app/components/FontAwesomeIconClient";
 
 export async function generateMetadata({
   params,
@@ -51,7 +51,7 @@ export default async function Page({
 
   return (
     <>
-      <div className="relative flex gap-10 justify-between items-start mt-20">
+      <div className="relative flex gap-10 justify-between items-start">
         <div className="w-full lg:w-3/4">
           <div className="space-y-4">
             <h1
@@ -85,7 +85,7 @@ export default async function Page({
         <div className="bottom-0 absolute w-full h-[1px] bg-gray-300" />
         <p className={`${bagel.className}`}>
           <span className="hidden md:block text-xl">Share this article</span>
-          <FontAwesomeIcon
+          <FontAwesomeIconClient
             icon={faShareAlt}
             className="w-5 h-5 p-1 md:hidden bg-black text-primary rounded-full"
           />

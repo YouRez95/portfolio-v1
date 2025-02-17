@@ -15,6 +15,7 @@ export const TestimonialHeader = () => (
       alt="image testimonials"
       fill
       className="object-cover"
+      priority
     />
   </div>
 );

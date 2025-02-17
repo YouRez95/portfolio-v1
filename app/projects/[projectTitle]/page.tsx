@@ -32,7 +32,7 @@ export default async function Page({
 
       <div className="flex flex-col items-center justify-center">
         <video
-          className="w-auto h-full shadow-lg rounded-2xl md:min-h-[400px] max-h-[600px]"
+          className="w-auto h-full shadow-lg rounded-2xl md:min-h-[400px] max-h-[400px]"
           autoPlay
           loop
           muted
@@ -95,8 +95,8 @@ export default async function Page({
               key={index}
               src={getUrl(image)}
               alt={`responsive design ${index}`}
-              width={600}
-              height={600}
+              width={300}
+              height={300}
               className="shadow-lg rounded-2xl"
             />
           ))}

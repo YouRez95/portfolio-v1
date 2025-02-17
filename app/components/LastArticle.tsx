@@ -9,8 +9,8 @@ import Link from "next/link";
 const LastArticle = async () => {
   const lastBlog = await getLastBlog();
   return (
-    <div className="space-y-10">
-      <h2 className={`${bagel.className} text-3xl md:text-5xl uppercase`}>
+    <div className="space-y-5">
+      <h2 className={`${bagel.className} text-xl md:text-5xl uppercase`}>
         last article
       </h2>
 
@@ -59,7 +59,7 @@ const LastArticle = async () => {
 
             <div className="w-fit mt-5 md:mt-0">
               <Link href={`/blogs/${lastBlog.slug}`} className="">
-                <Button backgroundColor="black" padding="10px 50px">
+                <Button backgroundColor="black" padding="7px 40px">
                   Read
                 </Button>
               </Link>

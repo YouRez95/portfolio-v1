@@ -1,16 +1,11 @@
 import { bagel } from "@/fonts/fonts";
-import {
-  faHandPointDown,
-  faHeart,
-  faLightbulb,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import Button from "../ui/Button";
 import Link from "next/link";
 import Image from "next/image";
 import { getThreeBlogs } from "@/app/actions";
-import { url } from "inspector";
 import { getUrl } from "@/utils";
+import FontAwesomeIconClient from "../FontAwesomeIconClient";
 
 export default async function Blogs() {
   const blogs = await getThreeBlogs();
@@ -25,7 +20,10 @@ export default async function Blogs() {
         >
           Latest
           <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
-            <FontAwesomeIcon icon={faLightbulb} className="text-secondary" />
+            <FontAwesomeIconClient
+              icon={faLightbulb}
+              className="text-secondary"
+            />
           </span>
           Thoughts
         </h1>
@@ -34,7 +32,7 @@ export default async function Blogs() {
         >
           Just for
           <span className="relative w-8 h-8 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 flex items-center justify-center scale-75">
-            <FontAwesomeIcon icon={faHeart} className="text-secondary" />
+            <FontAwesomeIconClient icon={faHeart} className="text-secondary" />
           </span>
           You
         </h1>
@@ -83,7 +81,9 @@ export default async function Blogs() {
         </div>
       </div>
       <div className="px-4 w-fit flex ml-auto lg:hidden">
-        <Button backgroundColor="black">See All Blogs</Button>
+        <Link href={"/blogs"}>
+          <Button backgroundColor="black">See All Blogs</Button>
+        </Link>
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ const Layout = ({ children }: Props) => {
             </h1>
           </Link>
         </div>
-        <div className="mt-20 max-w-[1500px] mx-auto space-y-10">
+        <div className="mt-10 max-w-[1500px] mx-auto space-y-10">
           {children}
           <div className="bg-gray-300 w-full h-[1px]" />
         </div>

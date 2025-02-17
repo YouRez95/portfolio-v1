@@ -12,7 +12,7 @@ export default function BlogsTags({ category }: Props) {
   return (
     <>
       {CATEGORY_BLOGS.map((cat) => (
-        <Link href={`/blogs/?cat=${cat.category}`} key={cat.id}>
+        <Link href={`/blogs/?cat=${cat.category}`} key={cat.id} className="">
           <Button
             fontSize="15px"
             padding="10px 15px"

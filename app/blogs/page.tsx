@@ -27,8 +27,10 @@ export default async function Page({ searchParams }: Props) {
             all articles
           </h2>
 
-          <div className="flex gap-2 md:gap-5">
-            <BlogsTags category={category} />
+          <div className="w-full overflow-x-scroll scrollbar-hide">
+            <div className="flex gap-2 md:gap-5 overflow-auto min-w-[500px]">
+              <BlogsTags category={category} />
+            </div>
           </div>
         </div>
         <AllBlogs category={category} page={page} />

@@ -14,7 +14,7 @@ const BlogCardView = ({ blog }: Props) => {
     <Link
       key={blog._id}
       href={`/blogs/${blog.slug}`}
-      className="hover:scale-105 transition-all ease-out"
+      className="lg:hover:scale-105 transition-all ease-out"
     >
       <article className="flex flex-col gap-2 cursor-pointer">
         <div className="relative min-w-[200px] h-[300px]">
