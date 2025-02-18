@@ -34,7 +34,7 @@ export default function Contact() {
 
   useEffect(() => {
     if (openModal) {
-      emailRef.current?.focus();
+      nameRef.current?.focus();
     }
   }, [openModal, emailRef]);
 
