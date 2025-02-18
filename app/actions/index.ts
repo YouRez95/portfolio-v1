@@ -249,7 +249,7 @@ export const getFeedbacks = async (): Promise<GetFeedbacks[]> => {
 }
   `;
 
-  const data = await client.fetch(query, {}, { next: { revalidate: 0 } });
+  const data = await client.fetch(query);
   // const data = await client.fetch(query, {}, {next: {revalidate: 86400}});
   return data;
 };
