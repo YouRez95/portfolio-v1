@@ -11,8 +11,6 @@ import Link from "next/link";
 import { addFeedback } from "../actions";
 const ReactStars = dynamic(() => import("react-stars"), { ssr: false });
 
-// WIP: Add feedback to the db with the field accepted false until accepted by the admin
-
 export default function Page() {
   const [selectedProfil, setSelectedProfil] = useState<number>(1);
   const [translateX, setTranslateX] = useState(0);
@@ -76,11 +74,13 @@ export default function Page() {
       </h1>
       <div className="flex max-w-[700px] relative lg:max-w-none m-auto lg:m-0 lg:p-0 flex-col lg:flex-row lg:items-center items-start justify-center h-screen bg-white">
         {!success && (
-          <div className="w-full lg:w-1/2 h-full p-10 flex flex-col items-center justify-center">
+          <div className="w-full lg:w-1/2 h-full p- md:p-10 flex flex-col items-start justify-center">
             <div className="space-y-5 md:space-y-10">
               <div>
-                <h1 className="text-4xl font-bold text-secondary">Feedback</h1>
-                <p className="text-lg text-gray-500">
+                <h1 className="text-2xl md:text-4xl font-bold text-secondary">
+                  Feedback
+                </h1>
+                <p className="text-base md:text-lg text-gray-500">
                   Help us improve our product by sharing your feedback
                 </p>
               </div>

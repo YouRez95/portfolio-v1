@@ -13,7 +13,7 @@ export default async function Testimonials() {
 
         {/* Testimonials cards */}
         <div className="h-[400px] lg:h-full px-1 overflow-hidden lg:w-1/2">
-          <div className="min-w-min flex flex-row lg:flex-col justify-start items-start gap-10 animate-testimonials">
+          <div className="min-w-full flex flex-row lg:flex-col justify-start items-start gap-10 animate-testimonials">
             {feedbacks.map((feedback, index) => (
               <TestimonialCard
                 testimonial={feedback}

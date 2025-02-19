@@ -27,7 +27,7 @@ export const TestimonialCard = ({
 }) => {
   return (
     <div
-      className={`min-w-[290px] sm:min-w-[400px] flex flex-col gap-5 p-3 ${getCardStyles(
+      className={`min-w-[290px] sm:min-w-[400px] w-full flex flex-col gap-3 h-full p-3 ${getCardStyles(
         index + 1
       )} ${className}`}
     >
