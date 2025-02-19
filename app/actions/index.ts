@@ -10,6 +10,7 @@ import {
 } from "../lib/interface";
 import { groq } from "next-sanity";
 import { MAX_ITEMS } from "../constants/blogs";
+import { emailTemplate } from "@/utils";
 
 // SEND EMAIL
 export const sendEmail = async ({
@@ -25,14 +26,9 @@ export const sendEmail = async ({
   try {
     await resend.emails.send({
       from: process.env.SENDER_EMAIL as string,
-      to: "",
+      to: process.env.RECIPIENT_EMAIL as string,
       subject: `New message from portfolio`,
-      html: `
-      <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
+      html: emailTemplate(name, email, message),
     });
 
     return { success: true };
